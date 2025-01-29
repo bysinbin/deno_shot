@@ -6,14 +6,16 @@ import * as ink from "https://deno.land/x/ink/mod.ts";
 import type { Size } from "./Config.ts";
 
 
-export async function getChromium(): Promise<string> {
+export async function getChromium(chromePath?: string): Promise<string> {
     const os = getOS();
     if (os !== OS.windows) {
         console.log("Not supported OS");
         return "Not supported OS"
     }
-
-    const binPath = await getChromiumPath();
+    
+  
+    
+    const binPath = "C:\\Program Files\\Google\\Chrome\\Application";
     const chrome = join(binPath, "chrome.exe");
     if (await exists(chrome)) {
         return chrome;
